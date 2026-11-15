@@ -31,7 +31,6 @@ public class Customer {
     private String email;
 
     @Column(name = "birth_date")
-    @Temporal(TemporalType.DATE)
     private LocalDate birthDate;
 
     @Enumerated(EnumType.STRING)

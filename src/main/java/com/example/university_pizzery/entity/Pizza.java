@@ -5,7 +5,9 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -53,6 +55,9 @@ public class Pizza {
             inverseJoinColumns = @JoinColumn(name = "ingredient_id")
     )
     private Set<Ingredient> ingredients =  new HashSet<>();
+
+    @OneToMany(mappedBy = "pizza", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<PizzaSize> sizes = new ArrayList<>();
 
     public Long getId() {
         return id;

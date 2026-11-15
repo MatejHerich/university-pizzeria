@@ -74,8 +74,8 @@ public class Order {
     @JoinColumn(name = "courier_id")
     private Customer courier;
 
-    @OneToMany(mappedBy = "pizza", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<PizzaSize> sizes = new ArrayList<>();
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<OrderPizza> items = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -219,5 +219,13 @@ public class Order {
 
     public void setCourier(Customer courier) {
         this.courier = courier;
+    }
+
+    public List<OrderPizza> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderPizza> items) {
+        this.items = items;
     }
 }

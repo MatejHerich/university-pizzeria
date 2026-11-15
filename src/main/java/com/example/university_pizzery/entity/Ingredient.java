@@ -2,6 +2,7 @@ package com.example.university_pizzery.entity;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -23,8 +24,8 @@ public class Ingredient {
     @Column(name = "is_spicy", nullable = false)
     private Boolean isSpicy;
 
-    @ManyToMany(mappedBy = "ingredients", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    private Set<Pizza> pizzas;
+    @ManyToMany(mappedBy = "ingredients", fetch = FetchType.LAZY)
+    private Set<Pizza> pizzas =  new HashSet<>();
 
     public Long getId() {
         return id;

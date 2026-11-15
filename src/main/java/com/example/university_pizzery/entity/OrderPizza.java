@@ -21,6 +21,15 @@ public class OrderPizza {
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
+    @Column(name = "pizza_name",  nullable = false, length = 45)
+    private String pizzaName;
+
+    @Column(name = "size_name",   nullable = false, length = 25)
+    private String sizeName;
+
+    @Column(name = "unit_price", nullable = false)
+    private Double unitPrice;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "pizza_size_id", nullable = false)
     private PizzaSize pizzaSize;
@@ -70,5 +79,37 @@ public class OrderPizza {
 
     public void setOrder(Order order) {
         this.order = order;
+    }
+
+    public List<OrderPizza> getItems() {
+        return items;
+    }
+
+    public void setItems(List<OrderPizza> items) {
+        this.items = items;
+    }
+
+    public String getPizzaName() {
+        return pizzaName;
+    }
+
+    public void setPizzaName(String pizzaName) {
+        this.pizzaName = pizzaName;
+    }
+
+    public String getSizeName() {
+        return sizeName;
+    }
+
+    public void setSizeName(String sizeName) {
+        this.sizeName = sizeName;
+    }
+
+    public Double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(Double unitPrice) {
+        this.unitPrice = unitPrice;
     }
 }
